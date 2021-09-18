@@ -3,9 +3,11 @@ var liveChannels = document.getElementById("liveChannels");
 var groups = document.querySelector(".groups");
 var groupsContains = document.querySelectorAll(".groups  *");
 var label = document.querySelectorAll("label");
+var channelcilck = true;
 
-liveChannels.addEventListener("click", () => {   
+liveChannels.addEventListener("click", () => {
     if (groups.classList.contains("visibility")) {
+        channelcilck = false;
         liveChannels.classList.remove("hover");
         // Hide Text
         groupsContains.forEach((ele) => {            
@@ -22,10 +24,12 @@ liveChannels.addEventListener("click", () => {
                         ele.style.display = "block";
                     }, 1000);
                 })
-            }, 2000);
-        }, 1000);
+            }, 1000);
+            channelcilck = true;
+        }, 2000);
     }
     else {
+        channelcilck = false;
         liveChannels.classList.add("hover");
         label.forEach((ele) => {            
             ele.style.display = "none";
@@ -38,9 +42,7 @@ liveChannels.addEventListener("click", () => {
                     ele.style.opacity = "1";
                 });
             }, 1000);
+            channelcilck = true;
         }, 2000);
     }
-})
-groupsContains.forEach((ele)=> {
-    ele.addEventListener("click", () => console.log(true));
 })
